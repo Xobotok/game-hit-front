@@ -1,91 +1,45 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <component :is="layout"></component>
 </template>
+<script>
+import main_layout from "@/layouts/main_layout.vue";
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+export default {
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || "empty") + "_layout";
+    },
+  },
+  async beforeMount() {
+    console.log(this.$route.meta.layout);
+  },
+  data() {
+    return {};
+  },
+  beforeCreate() {},
+  mounted() {},
+  components: {
+    main_layout,
+  },
+  methods: {
+    heartBeat() {
+      /* let userItem = localStorage.getItem('sber-user');
+       if (userItem) {
+         let accessToken = JSON.parse(userItem);
+         accessToken = accessToken.accessToken;
+         let refreshToken = JSON.parse(userItem).refreshToken;
+         let user = parseJwt(accessToken);
+         user.accessToken = accessToken;
+         user.refreshToken = refreshToken;
+         localStorage.setItem('sber-user', JSON.stringify(user));
+         this.$store.dispatch('USER_ADD_CURRENT', user);
+         this.$store.$axios.defaults.headers.common['Authorization'] = accessToken;
+       } else {
+         setTimeout(() => {
+           this.heartBeat();
+         }, 1000);
+       }*/
+    },
+  },
+};
+</script>
