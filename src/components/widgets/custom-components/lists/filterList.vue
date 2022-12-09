@@ -23,8 +23,14 @@ export default {
 </script>
 
 <style scoped>
+.filter {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
 .filter-list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>

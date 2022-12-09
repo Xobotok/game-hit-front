@@ -28,6 +28,7 @@ export default {
   top: 0;
   left: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
 }

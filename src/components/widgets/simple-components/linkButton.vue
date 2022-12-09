@@ -48,6 +48,9 @@ export default {
   background: #801dce;
   border-radius: 5px;
 }
+.icon {
+  margin-left: 14px;
+}
 .simple-button {
   font-size: 18px;
   width: 100%;

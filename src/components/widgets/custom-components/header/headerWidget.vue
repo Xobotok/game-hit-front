@@ -134,6 +134,8 @@ export default {
   font-size: 16px;
 }
 .subheader {
+  padding-left: 20px;
+  padding-right: 20px;
   position: absolute;
   top: 81px;
   width: 100%;
@@ -143,7 +145,7 @@ export default {
   z-index: 9;
 }
 .subheader-content {
-  max-width: 1690px;
+  max-width: 1640px;
   width: 100%;
   display: flex;
   left: 0;
@@ -159,7 +161,7 @@ export default {
 }
 .top-side {
   width: 100%;
-  max-width: 1690px;
+  max-width: 1640px;
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;

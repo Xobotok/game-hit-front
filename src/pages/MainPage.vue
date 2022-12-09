@@ -1,42 +1,6 @@
 <template>
   <div class="page">
-    <div class="slider">
-      <template v-for="item in slides">
-        <div
-          class="slide-item"
-          :style="{ 'background-image': 'url(' + item.image + ')' }"
-          v-if="item.active"
-        >
-          <div class="content">
-            <div class="buttons">
-              <div class="button">
-                <linkButton
-                  :itemWidth="'385px'"
-                  :text="'PLAY'"
-                  :link="item.link"
-                  :icon="'game'"
-                ></linkButton>
-              </div>
-              <div class="button">
-                <linkButton
-                  :link="item.link"
-                  :class="'transparent'"
-                  text="MORE INFO"
-                ></linkButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
-      <div class="control">
-        <div
-          class="control-item"
-          v-for="item in slides"
-          :class="{ active: item.active === true }"
-          @click="select(item)"
-        />
-      </div>
-    </div>
+    <sliderWidget :slides="slides" />
     <div class="center top-block">
       <topList :top-list="topList"></topList>
     </div>
@@ -57,14 +21,14 @@
 </template>
 
 <script>
-import linkButton from "../components/widgets/simple-components/linkButton.vue";
 import topList from "../components/widgets/custom-components/lists/topList.vue";
 import filterList from "../components/widgets/custom-components/lists/filterList.vue";
 import newsItem from "../components/widgets/custom-components/items/newsItem.vue";
+import sliderWidget from "../components/widgets/custom-components/slider/sliderWidget.vue";
 
 export default {
   name: "MainPage",
-  components: { linkButton, topList, filterList, newsItem },
+  components: { sliderWidget, topList, filterList, newsItem },
   data() {
     return {
       gamesList: [
@@ -87,7 +51,7 @@ export default {
         {
           id: 3,
           image: '',
-          header: 'Warcraft 3: Reforged',
+          title: 'Warcraft 3: Reforged',
           text: 'Worst game of 2019',
           date: '',
           author: '',
@@ -95,7 +59,7 @@ export default {
         {
           id: 4,
           image: '',
-          header: 'Hogwarts Legacy',
+          title: 'Hogwarts Legacy',
           text: 'Most anticipated game of 2020',
           date: '',
           author: '',
@@ -103,7 +67,7 @@ export default {
         {
           id: 5,
           image: '',
-          header: 'Vampire: The Masquerade - Bloodlines 2',
+          title: 'Vampire: The Masquerade - Bloodlines 2',
           text: 'Super game',
           date: '',
           author: '',
@@ -163,40 +127,39 @@ export default {
       ],
       slides: [
         {
-          name: "ENLISTED Battle for Moscow",
-          text: "Возглавьте отряд бойцов в невероятно масштабных и реалистичных битвах, повторяющих самые известные сражения Второй мировой войны",
+          title: "ENLISTED Battle for Moscow",
+          description: "Возглавьте отряд бойцов в невероятно масштабных и реалистичных битвах, повторяющих самые известные сражения Второй мировой войны",
           image: "Изображение",
           link: "/game/1",
-          active: true,
           id: 1,
         },
         {
-          name: "Taonga: the island farm",
-          text: "Возглавьте отряд бойцов в невероятно масштабных и реалистичных битвах, повторяющих самые известные сражения Второй мировой войны",
+          title: "Taonga: the island farm",
+          description: "Получите возможность поселиться на острове, где вам предстоит развивать ферму, управлять ею и получать прибыль",
           image: "Изображение",
           link: "/game/2",
-          active: false,
           id: 2,
         },
       ],
     };
   },
   methods: {
-    select(item) {
-      this.slides.forEach((element) => {
-        element.active = false;
-      });
-      item.active = true;
-    },
+
   },
 };
 </script>
 
 <style scoped>
+.game-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
 .games-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  padding-bottom: 80px;
 }
 .filters {
   padding-bottom: 20px;
@@ -207,20 +170,6 @@ export default {
 .content {
   max-width: 1640px;
   width: 100%;
-}
-
-.buttons {
-  position: absolute;
-  bottom: 150px;
-}
-
-.slider {
-  padding-bottom: 171px;
-  height: 800px;
-}
-
-.buttons {
-  display: flex;
 }
 .header {
   font-size: 22px;
@@ -234,41 +183,7 @@ export default {
   justify-content: center;
   width: 100%;
 }
-.games-list {
-  padding-bottom: 80px;
-}
-.button {
-  margin-right: 20px;
-}
-
-.control {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
 .page {
   width: 100%;
-}
-
-.slide-item {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.control-item.active {
-  background: #ffffff;
-  opacity: 0.55;
-}
-
-.control-item {
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid white;
 }
 </style>

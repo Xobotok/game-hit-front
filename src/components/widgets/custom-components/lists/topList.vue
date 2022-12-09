@@ -23,9 +23,15 @@ export default {
 </script>
 
 <style scoped>
+.game-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
 .top-list {
   display: flex;
+  flex-wrap: wrap;
   padding-bottom: 100px;
-  justify-content: space-between;
+  justify-content: center;
 }
 </style>
