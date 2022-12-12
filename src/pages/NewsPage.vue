@@ -8,7 +8,7 @@
         NEWS
       </div>
       <div class="news-list">
-        <newsItem :type="'new'" v-for="item in news" :key="item.id" :item="item"></newsItem>
+        <newsItem :type="'news'" v-for="item in news" :key="item.id" :item="item"></newsItem>
       </div>
       <div class="more-button">
         <linkButton link="" item-width="350px" text="LOAD MORE" @clickHandler="LoadMore"></linkButton>

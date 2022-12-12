@@ -3,6 +3,7 @@ import main from "../pages/MainPage.vue";
 import gamePage from "../pages/GamePage.vue";
 import PlayFrame from "../pages/PlayFrame.vue";
 import NewsPage from "../pages/NewsPage.vue";
+import NewPage from "../pages/NewPage.vue";
 
 const routes = [
   {
@@ -28,6 +29,12 @@ const routes = [
     name: "All news",
     meta: { layout: "main", title: "News" },
     component: NewsPage,
+  },
+  {
+    path: "/news/:id",
+    name: "News page",
+    meta: { layout: "main", title: "News" },
+    component: NewPage,
   },
 ];
 

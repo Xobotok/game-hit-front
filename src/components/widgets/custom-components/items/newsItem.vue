@@ -1,7 +1,7 @@
 <template>
   <div class="new">
     <img :src="item.image" alt="" class="poster" />
-    <router-link :to="makeLink" class="news-title">{{ item.title }}</router-link>
+    <router-link :to="makeLink()" class="news-title">{{ item.title }}</router-link>
     <div class="news-details">
       <div class="news-text">{{ item.text }}</div>
       <div class="news-date">{{ item.date }}</div>
@@ -24,11 +24,7 @@ export default {
   },
   methods: {
     makeLink() {
-      if (this.type === 'game') {
-        return `/game/${this.item.id}`;
-      } else {
-        return `/news/${this.item.id}`;
-      }
+      return `/${this.type}/${this.item.id}`;
     }
   },
 };
@@ -36,6 +32,7 @@ export default {
 
 <style scoped>
 .new {
+  width: 380px;
   padding-bottom: 40px;
 }
 .poster {
@@ -54,7 +51,15 @@ export default {
   font-weight: 700;
 }
 .news-title {
-  padding-bottom: 10px;
+  display: block;
+  display: -webkit-box;
+  max-width: 400px;
+  -webkit-line-clamp: 2; /* количество строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  height: 45px;
   font-size: 16px;
   color: white;
 }
