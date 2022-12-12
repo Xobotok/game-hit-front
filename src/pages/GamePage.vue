@@ -60,7 +60,7 @@
       <div class="content-title">Recommended Games</div>
       <div class="recommended-list">
         <div class="recommended-item" v-for="item in recommended" >
-          <newsItem :item="item" />
+          <newsItem :type="'game'" :item="item" />
         </div>
       </div>
     </div>

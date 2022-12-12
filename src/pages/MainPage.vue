@@ -12,7 +12,7 @@
         </div>
         <div class="games-list">
           <div class="game-item" v-for="item in gamesList" :key="item.id">
-            <newsItem :item="item" />
+            <newsItem :type="'game'" :item="item" />
           </div>
         </div>
       </div>

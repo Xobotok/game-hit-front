@@ -53,8 +53,8 @@ export default {
         },
         {
           id: 2,
-          text: "Help",
-          link: "/help",
+          text: "News",
+          link: "/news",
           type: "link",
         },
         {
