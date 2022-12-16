@@ -1,10 +1,10 @@
 <template>
   <div class="new">
-    <img :src="item.image" alt="" class="poster" />
-    <router-link :to="makeLink()" class="news-title">{{ item.title }}</router-link>
+    <img :src="image" alt="" class="poster" />
+    <router-link :to="makeLink()" class="news-title">{{ title }}</router-link>
     <div class="news-details">
-      <div class="news-text">{{ item.text }}</div>
-      <div class="news-date">{{ item.date }}</div>
+      <div class="news-text">{{ text }}</div>
+      <div class="news-date">{{ date }}</div>
     </div>
   </div>
 </template>
@@ -13,18 +13,34 @@
 export default {
   name: "newsItem",
   props: {
-    item: {
-      type: Object,
+    image: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
       required: true,
     },
+    text: {
+      type: String,
+      default: "",
+    },
     type: {
+      type: String,
+      required: true,
+    },
+    date: {
+      type: String,
+      default: "",
+    },
+    id: {
       type: String,
       required: true,
     },
   },
   methods: {
     makeLink() {
-      return `/${this.type}/${this.item.id}`;
+      return `/${this.type}/${this.id}`;
     }
   },
 };

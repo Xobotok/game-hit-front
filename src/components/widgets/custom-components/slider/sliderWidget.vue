@@ -5,6 +5,7 @@
       <div
         class="control-item"
         v-for="item in slides"
+        :key="item.id"
         :class="{ active: item === activeSlide }"
         @click="select(item)"
       />

@@ -12,7 +12,7 @@
         </div>
         <div class="games-list">
           <div class="game-item" v-for="item in gamesList" :key="item.id">
-            <newsItem :type="'game'" :item="item" />
+            <newsItem :id="item.id" :type="'game'" :title="item.title" :text="item.category_title" />
           </div>
         </div>
       </div>
@@ -146,6 +146,13 @@ export default {
   methods: {
 
   },
+  mounted() {
+    this.$store.action('game/get-games').then(res => {
+      if(res.data.ok == 1) {
+        this.gamesList = res.data.data.games;
+      }
+    })
+  }
 };
 </script>
 

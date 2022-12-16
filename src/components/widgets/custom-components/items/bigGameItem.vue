@@ -5,7 +5,7 @@
       }}</router-link>
     <div class="game-info">
       <div class="game-title">{{ game.title }}</div>
-      <div class="game-description">{{ game.description }}</div>
+      <div class="game-description">{{ game.short_description }}</div>
       <div class="game-controls">
         <div class="game-buttons">
           <linkButton

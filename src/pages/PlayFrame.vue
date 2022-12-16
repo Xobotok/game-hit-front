@@ -11,7 +11,7 @@
           <div class="game-desc">
             <div class="game-title">{{game.title}}</div>
             <div class="game-categories">
-              <div class="category" v-for="category in game.categories">
+              <div class="category" v-for="category in game.categories" :key="category.id">
                 {{ category }}
               </div>
             </div>

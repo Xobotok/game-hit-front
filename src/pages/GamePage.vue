@@ -2,7 +2,7 @@
   <div class="page" v-if="game != false">
     <div
       class="game-head"
-      :style="{ 'background-image': 'url(' + this.game.poster + ')' }"
+      :style="{ 'background-image': 'url(' + game.poster + ')' }"
     >
       <bigGameItem :game="game" />
     </div>
@@ -11,7 +11,7 @@
         class="gameplay-poster"
         :style="{ 'background-image': 'url(' + game.gameplayPoster + ')' }"
       ></div>
-      <div class="game-description" v-html="game.gameplayText"></div>
+      <div class="game-description" v-html="game.description"></div>
       <div class="buttons">
         <linkButton
           :item-width="'382px'"
@@ -35,9 +35,7 @@
         <div class="info-item">
           <div class="info-header">Platform</div>
           <div class="info-text">
-            <template v-for="platform in game.platforms">{{
-              platform + " "
-            }}</template>
+           {{game.platform}}
           </div>
         </div>
       </div>
@@ -48,7 +46,7 @@
         <iframe
           width="1080"
           height="630"
-          src="https://www.youtube.com/embed/FsRvEIADvwg"
+          :src="game.video"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -59,8 +57,8 @@
     <div class="content">
       <div class="content-title">Recommended Games</div>
       <div class="recommended-list">
-        <div class="recommended-item" v-for="item in recommended" >
-          <newsItem :type="'game'" :item="item" />
+        <div class="recommended-item" v-for="item in recommended" :key="item.id" >
+          <newsItem :type="'game'" :title="item.title" :id="item.id" :text="item.short_description"/>
         </div>
       </div>
     </div>
@@ -82,7 +80,7 @@ export default {
           id: 1,
           image: "",
           title: "The Witcher 3: Wild Hunt",
-          text: "Best game of 2015",
+          short_description: "Best game of 2015",
           date: "",
           author: "",
         },
@@ -90,7 +88,7 @@ export default {
           id: 2,
           image: "",
           title: "Watch Dogs 2",
-          text: "Best game of 2016",
+          short_description: "Best game of 2016",
           date: "",
           author: "",
         },
@@ -98,7 +96,7 @@ export default {
           id: 3,
           image: "",
           title: "Warcraft 3: Reforged",
-          text: "Worst game of 2019",
+          short_description: "Worst game of 2019",
           date: "",
           author: "",
         },
@@ -106,7 +104,7 @@ export default {
           id: 4,
           image: "",
           title: "Hogwarts Legacy",
-          text: "Most anticipated game of 2020",
+          short_description: "Most anticipated game of 2020",
           date: "",
           author: "",
         },
@@ -121,8 +119,15 @@ export default {
       ],
     };
   },
+  beforeMount() {
+
+  },
   mounted() {
-    this.game = {
+    this.$store.axios(this.$store.BASE_URL + 'game/get-game?id=' + this.$route.params.id).then((response) => {
+      this.game = response.data.data;
+      console.log(this.game);
+    });
+   /* this.game = {
       id: 2,
       title: "Cyberpunk 2077",
       poster:
@@ -142,7 +147,7 @@ export default {
       publisher: "CD Projekt Red",
       website: "https://www.cyberpunk.net/",
       trailer: "https://www.youtube.com/watch?v=QwievZ1Tx-8",
-    };
+    };*/
   },
   methods: {},
 };
