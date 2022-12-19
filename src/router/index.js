@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import main from "../pages/MainPage.vue";
-import gamePage from "../pages/GamePage.vue";
+import GamePage from "../pages/GamePage.vue";
 import PlayFrame from "../pages/PlayFrame.vue";
 import NewsPage from "../pages/NewsPage.vue";
 import NewPage from "../pages/NewPage.vue";
@@ -16,7 +16,7 @@ const routes = [
     path: "/game/:id",
     name: "Game page",
     meta: { layout: "main", title: "Game page" },
-    component: gamePage,
+    component: GamePage,
   },
   {
     path: "/play/:id",

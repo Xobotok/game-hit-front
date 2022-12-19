@@ -12,19 +12,22 @@
               style="padding-right: 20px"
               :itemWidth="'385px'"
               :text="'PLAY'"
-              :link="game.link"
-              :icon="'game'"
+              :link="'/play/' + game.id"
+              :icon="'gamepad-icon'"
           ></linkButton>
-          <linkButton
+<!--          <linkButton
               :link="game.link"
               :class="'transparent'"
               text="MORE INFO"
-          ></linkButton>
+          ></linkButton>-->
         </div>
-        <div class="game-rating">
-          <div class="rating-title">RATING</div>
-          <ratingStars :rating="game.rating" />
+        <div class="game-categories">
+          <div class="game-category"></div>
         </div>
+      </div>
+      <div class="game-rating">
+        <div class="rating-title">RATING</div>
+        <ratingStars :rating="game.rating" />
       </div>
     </div>
   </div>
@@ -47,8 +50,14 @@ export default {
       required: true,
     },
   },
+  computed: {
+    categories() {
+     console.log(this.game.category);
+      return this.game.category;
+    },
+  },
   mounted() {
-
+    console.log(this.game);
   },
   methods: {
 
