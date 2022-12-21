@@ -163,7 +163,12 @@ export default {
       if(res.data.ok == 1) {
         this.gamesList = res.data.data.games;
       }
-    })
+    });
+    this.$store.action('game/get-top-games').then(res => {
+      if(res.data.ok == 1) {
+        this.topList = res.data.data.games;
+      }
+    });
   }
 };
 </script>

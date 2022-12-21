@@ -7,12 +7,12 @@
       ></iframe>
       <div class="game-info">
         <div class="game-item">
-          <div class="game-icon" :style="{'background-image': 'url(' + game.gameIcon + ')'}"></div>
+          <div class="game-icon" v-if="game.small_icon_image" :style="{'background-image': 'url(\'' + game.small_icon_image + '\')'}"></div>
           <div class="game-desc">
             <div class="game-title">{{game.title}}</div>
             <div class="game-categories">
               <div class="category" v-for="category in game.categories" :key="category.id">
-                {{ category }}
+                {{ category.title }}
               </div>
             </div>
           </div>
@@ -44,12 +44,15 @@ export default {
       this.fullscreen = !this.fullscreen;
     },
     init() {
-      this.game = {
+      this.$store.action('game/get-game?id=' + this.$route.params.id).then(res =>{
+        this.game = res.data.data;
+      });
+     /* this.game = {
         title: "Вот такая игра",
         frameUrl: "https://www.youtube.com/embed/FsRvEIADvwg",
         categories: ["Shooter", "Action", "FPS"],
         gameIcon: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1622542020",
-      };
+      };*/
     },
   },
 };
