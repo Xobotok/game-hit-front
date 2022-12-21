@@ -52,6 +52,7 @@ export default {
   padding-bottom: 40px;
 }
 .poster {
+  object-fit: cover;
   margin-bottom: 10px;
   width: 380px;
   height: 260px;

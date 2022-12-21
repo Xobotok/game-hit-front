@@ -4,7 +4,7 @@
         class="game-head"
         :style="{ 'background-image': 'url('+ '\'' + game.poster_image + '\'' + ')' }"
     >
-      <bigGameItem :game="game"/>
+      <bigGameItem style="z-index: 3" :game="game"/>
     </div>
     <div class="content">
       <div
@@ -58,7 +58,7 @@
       <div class="content-title">Recommended Games</div>
       <div class="recommended-list">
         <div class="recommended-item" v-for="item in recommended" :key="item.id">
-          <newsItem :type="'game'" :title="item.title" :id="item.id" :text="item.short_description"/>
+          <newsItem :type="'game'" :image="item.poster_image" :title="item.title" :id="item.id" :text="item.short_description"/>
         </div>
       </div>
     </div>
@@ -209,6 +209,16 @@ export default {
   padding-bottom: 30px;
 }
 
+.game-head:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 2;
+}
 .game-head {
   width: 100vw;
   margin-bottom: 60px;
@@ -216,7 +226,7 @@ export default {
   display: flex;
   justify-content: center;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
 }
 </style>

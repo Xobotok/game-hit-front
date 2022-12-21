@@ -12,7 +12,7 @@
         </div>
         <div class="games-list">
           <div class="game-item" v-for="item in gamesList" :key="item.id">
-            <newsItem :id="item.id" :type="'game'" :title="item.title" :text="item.category_title" />
+            <newsItem :image="item.poster_image" :id="item.id" :type="'game'" :title="item.title" :text="getCategory(item)" />
           </div>
         </div>
       </div>
@@ -144,7 +144,19 @@ export default {
     };
   },
   methods: {
-
+    getCategory(item) {
+      let category = '';
+      if(item.categories) {
+        for(let i = 0; i < item.categories.length; i++) {
+          if(i < item.categories.length - 1) {
+            category += item.categories[i].title + ', ';
+          } else {
+            category += item.categories[i].title;
+          }
+        }
+      }
+      return category;
+    }
   },
   mounted() {
     this.$store.action('game/get-games').then(res => {
