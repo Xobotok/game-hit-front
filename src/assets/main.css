@@ -7,18 +7,34 @@
 
   font-weight: normal;
 }
-
+*{
+  box-sizing: border-box;
+}
+.input:focus {
+  outline: none;
+  border: transparent;
+}
+input:focus-visible {
+  outline: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.page-header {
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 53px;
+  color: #FFFFFF;
+  padding-bottom: 35px;
+}
+a:hover {
+  background-color: transparent;
+}
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: white;
   transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
 }
 
 @media (min-width: 1024px) {
