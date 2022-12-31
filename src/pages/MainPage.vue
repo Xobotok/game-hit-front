@@ -106,7 +106,7 @@ export default {
           title: "Game 1",
           link: "/game/1",
           description:
-            "Возглавьте отряд бойцов в невероятно масштабных и реалистичных битвах, повторяющих самые известные сражения Второй мировой войны",
+              "Возглавьте отряд бойцов в невероятно масштабных и реалистичных битвах, повторяющих самые известные сражения Второй мировой войны",
         },
         {
           id: 2,
@@ -167,6 +167,7 @@ export default {
     this.$store.action('game/get-top-games').then(res => {
       if(res.data.ok == 1) {
         this.topList = res.data.data.games;
+        console.log(this.topList)
       }
     });
   }

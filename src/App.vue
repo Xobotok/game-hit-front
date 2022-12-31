@@ -11,7 +11,7 @@ export default {
     },
   },
   async beforeMount() {
-    console.log(this.$route.meta.layout);
+
   },
   data() {
     return {};
